@@ -8,9 +8,11 @@ const Filters = {
 
 const state = {
     todos: [
-        new Todo('Piedra del alma'),
-        new Todo('Piedra del alma'),
-        new Todo('Piedra del alma'),
+        new Todo('Piedra del fentanilo'),
+        new Todo('Piedra del marijuana'),
+        new Todo('Piedra del cocaine'),
+        new Todo('Piedra del lsd'),
+        new Todo('Piedra del clonasepan'),
     ],
     filter: Filters.All,
 }
@@ -47,7 +49,12 @@ const addTodo = ( description ) => {
  * @param {String} todoId identificador de todo
  */
 const toggleTodo = ( todoId ) => {
-    throw new Error('Not implemented');
+    state.todos = state.todos.map( todo => {
+        if( todo.id === todoId ) {
+            todo.done = !todo.done;
+        }
+        return todo;
+    })
 }
 
 /**
