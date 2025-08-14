@@ -40,9 +40,18 @@ export const App = ( elementId ) => {
         event.target.value = '';
     })
 
-    todoListUL.addEventListener('click', () => {
+    todoListUL.addEventListener('click', ( event ) => {
         const element = event.target.closest('[data-id]');
         todoStore.toggleTodo( element.getAttribute('data-id'));
         displayTodos();
+    })
+
+    todoListUL.addEventListener('click', ( event) => {
+        const isDestroyElement = event.target.className === 'destroy';
+        if( isDestroyElement ) {
+            const element = event.target.closest('[data-id]');
+            todoStore.deleteTodo( element.getAttribute('data-id'));
+            displayTodos();
+        }
     })
 }
